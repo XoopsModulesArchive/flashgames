@@ -1,0 +1,75 @@
+// ------------------------------------------------------------------------------- //
+//                   XF GuestBook 2.1 for XOOPS-JP 2.0.x        //
+// ------------------------------------------------------------------------------ //
+// Author:                                    : C. Felix alias the Cat
+
+Mis à jour en v2.1 le 15/05/2004
+----------------------------------------------------
+Ajout des options pays et sexe du signataire dans le formulaire, et affichage dans le message
+Re-écriture de l'administration : options générales, options du formulaire, gestion des messages, gestion des pays
+Gestion des messages (effacer, éditer, approuver) possible depuis la page index.
+Intégration de la fonction recherche
+Ecriture d'une classe pour les messages.
+Re-écriture des templates
+
+Introduction
+--------------------
+Livre d'or pour Xoops 2.0.x
+Permet l'affichage du pays (sous forme de drapeau) et du sexe (sous forme de symbole) du signataire du message.
+Un lien sur le drapeau ou le symbole du sexe permet de filtrer par pays ou par sexe.
+Nombreuses options paramétrables.
+Affichage par templates
+Inclut la fonction recherche
+Bloc dernières dédicaces
+
+->Compatible hack Multilangage ML 1.3 et register_global sur off
+
+Options
+-------------
+Options générales paramétrables:
+Nombre de messages par page, 
+Signature par anonymes , 
+Modération, 
+Envoi mail webmestre à chaque nouveau message
+Affichage avatar et rang des membres
+
+Options du formulaire:
+Sexe, 
+Pays, 
+Email obligatoire, 
+Zone de texte avec/sans icones (url, mail,...), avec/sans mise en forme texte (couleur, police,...), avec/sans smileys
+
+Options du bloc:
+Nombre de messages, 
+Longueur du titre
+
+Templates
+-----------------
+Affichage du guestbook via 2 templates: (le choix ci-dessous est donc modifiable).
+Mail du signataire visible uniquement par webmestre.
+IP du signataire 
+
+IMPORTANT : FIX
+------------------------
+Le fichier kernel\object.php corrige un bug de la version 2.06 de xoops.
+Vous devez absolument remplacer votre fichier d'origine par celui-ci, ou remplacer la ligne 456 
+if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+([\.][a-z0-9-]+)+$/i",$cleanv)) {
+par
+if ($cleanv != '' && !preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+([\.][a-z0-9-]+)+$/i",$cleanv)) {
+
+Upgrade v1.x vers v2.0 
+------------------------
+Uploader tous les fichiers
+Mise à jour des tables avec phpMyAdmin: fichier upgrade/xfguestbook_v1tov2.sql
+
+Compatibilité XtremGuestBook v2.3
+--------------------------------------------------------
++La structure de la table étant identique avec la v1, vous pouvez récupérer vos messages de XtremGuestBook v2.3 :
++Installer XF GuestBook v1.1
++Effacer la table xoops_xfguestbook (ou la renommer)
++Faire une copie de votre table xoops_xtremguestbook en la nommant xfguestbook (structure et données)
++Dans cette table xfguestbook, renommer le champ xtremguestbook_id en xfguestbook_id.
++Faire l'upgrade XF Guestbook v1.1 vers v2.0
+
+
+Enjoy-it !

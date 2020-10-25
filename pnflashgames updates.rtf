@@ -1,0 +1,12 @@
+Oliver,
+Here are the changes that I made while updating your module. Great work! I really like your style and it was very easy for me to read your code and make the necessary changes. The only thing I did not do because I did not want to overstep my priveledge of editing your code was add a note somewhere in the admin or game submission page that informed people of where they can get pnFlashGames enabled games. I know we have the footer there, but it may not be inherently clear to the average user that the games should come from pnFlashGames.com. But that is just a thought, not a request or anything :)
+Updates:
+- Moved Footer output to include/functions.php GetFooter() function. This way you can update/maintain your footer output in one place rather than in several. Updated the files to use this function rather than hard code the footer output in several different places.
+- Added pnFlashGames_getDomain() and pnFlashGames_getChecksum() to functions.php.
+- Added 'license' column to games table and updated submit.php to define the value for license. Added new constant to language file "_ALBM_GAMELICENSE" (english: "Game License").
+- Modified game.php and flashgames_gameformat.html to get and pass the extra information required by commercial games.
+- Modified editgame.php to allow for editing of the game's license key field.
+- Modified functions.php and centralized score saving and game data saving/loading functions there.
+- Heavy modifications to index.php (a complete rewrite of pnFlashGames API handlers).
+- Added support for games that utilize the game data saving/loading feature of pnFlashGames >= version 0.8
+- Added the refreshscores() JavaScript function to your game display template. The function is empty for now, but you could use this in addition to an iframe on your page to be able to dynamically refresh the scores list without having to refresh the entire page. Of course, this only works for IE users. You can see this in action on pnFlashGames.com. If you remove that JS function, newer games that automatically attempt to refresh that list will throw an error. By keeping the empty function there you ensure that no errors will be detected and you will still be able to support any browser. If you want more help or information on how that dynamic refresh works, let me know and I'll be glad to show you how I did it.

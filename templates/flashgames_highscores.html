@@ -1,0 +1,54 @@
+<br>
+
+<div style="margin-top: 2px;text-align: center;"><a href="<{$xoops_url}>/modules/flashgames/index.php"><img src="<{$xoops_url}>/modules/flashgames/images/logo.gif" alt=""></a></div>
+<br><br>
+<h4><{$lang_title}></h4>
+
+<table  width="100%" >
+<tr>
+<!-- Start ranking loop -->
+<{foreach item=ranking from=$rankings}>
+
+ 
+
+  <td width="170" height="42">
+    <table>
+   <tr>
+<br><br>
+   <td  width = "170" class="even1" height="22">
+   <{$ranking.image}> <strong><{$ranking.title}></strong>
+
+
+   </td> 
+   </tr>
+   </table>
+
+
+<table>
+ 
+  <!-- Start links loop -->
+  <{foreach item=link from=$ranking.scores}>
+
+  <tr>
+
+    <td width="20"><{$link.rank}>.</td>
+    <td width="60"><{$link.name}></td>
+    <td width="50"><{$link.score}></td>
+    </tr>
+
+  <{/foreach}>
+  <!-- End links loop-->
+
+</table>
+</td>
+
+<{if $link.count is div by 3}>
+    </tr><tr>
+    <{/if}>
+
+
+<{/foreach}>
+
+</tr>
+</table>
+<!-- End ranking loop -->
